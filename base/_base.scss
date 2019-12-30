@@ -21,8 +21,3 @@ table {
   width: 100%;
 }
 
-h1 {
-  @include media-up(xl) {
-    font-size: 12rem;
-  }
-}
