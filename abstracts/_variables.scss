@@ -1,5 +1,6 @@
 // -----------------------------------------------------------------------------
 // This file contains global Sass variables.
+// And override vendor's variables.
 // -----------------------------------------------------------------------------
 
 
@@ -16,12 +17,19 @@ $container-max-width: 1180px;
 $container-padding: 20px;
 
 
-/// Breakpoints map
-/// @prop {String} keys - Keys are identifiers mapped to a given length
-/// @prop {Map} values - Values are actual breakpoints expressed in pixels
-$breakpoints: (
-  sm: 420px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1300px,
+/// MQ Breakpoint list override
+/// @type Map
+$mq-breakpoints: (
+    sm: 320px,
+    md: 740px,
+    lg: 980px,
+    xl: 1300px
 );
+
+
+/// RFS breakpoint override
+/// @type Size
+$rfs-breakpoint: map-get($mq-breakpoints, xl);
+/// RFS factor override
+/// @type Number
+$rfs-factor: 10;
