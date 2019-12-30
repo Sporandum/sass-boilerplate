@@ -2,6 +2,7 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
+
 /// Container
 @mixin container($max-width, $padding: 0) {
   max-width: $max-width;
@@ -12,18 +13,6 @@
   width: 100%;
  }
 
- /// Font properties
- @mixin font-props($font-size: false, $font-weight: false, $font-style: false) {
-   @if ($font-size) {
-     font-size: $font-size;
-   }
-   @if ($font-weight) {
-     font-weight: $font-weight;
-   }
-   @if ($font-style) {
-     font-style: $font-style;
-   }
- }
  
 /// Clearfix
 /// Mixin to drop micro clearfix into a selector. Further reading:
@@ -36,6 +25,7 @@
     clear: both !important;
   }
 }
+
 
 /// Event wrapper
 /// @author Harry Roberts
@@ -61,6 +51,7 @@
     }
   }
 }
+
 
 /// Fix offset height target with ancor and fixed menu
 /// Apply on element:target
