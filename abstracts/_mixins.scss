@@ -1,0 +1,71 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Container
+@mixin container($max-width, $padding: 0) {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+  width: 100%;
+ }
+
+ /// Font properties
+ @mixin font-props($font-size: false, $font-weight: false, $font-style: false) {
+   @if ($font-size) {
+     font-size: $font-size;
+   }
+   @if ($font-weight) {
+     font-weight: $font-weight;
+   }
+   @if ($font-style) {
+     font-style: $font-style;
+   }
+ }
+ 
+/// Clearfix
+/// Mixin to drop micro clearfix into a selector. Further reading:
+/// @link http://www.cssmojo.com/the-very-latest-clearfix-reloaded/
+@mixin clearfix() {
+
+  &:after {
+    content: "" !important;
+    display: block !important;
+    clear: both !important;
+  }
+}
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+
+  @else {
+
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Fix offset height target with ancor and fixed menu
+/// Apply on element:target
+/// @param {number | string} $height - Height of offset
+@mixin height-offset-target($height) {
+  padding-top: #{$height - 2px};
+  margin-top: -#{$height - 2px};
+}

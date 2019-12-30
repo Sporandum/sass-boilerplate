@@ -1,0 +1,85 @@
+////
+/// MEDIA QUERIES AND BREAKPOINTS
+/// @author Sporandum
+////
+
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  sm: 420px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1300px,
+) !default;
+
+
+/// Mixin media-up: media screen and min-width
+/// @require $breakpoints
+/// @param {String} $min-width - Key in $breakpoints or manual min-width value
+@mixin media-up($min-width: null) {
+  $size: null;
+  @if (type-of($min-width) == number) and (not unitless($min-width)) {
+    $size: $min-width;
+  }
+  @if (map-has-key($breakpoints, $min-width)) {
+    $size: map-get($breakpoints, $min-width)
+  }
+  @if $size {
+    @media screen and (min-width: #{$size - 1px}) {
+      @content;
+    } 
+  } @else {
+    @warn "undefined or null value for media-up";
+  }
+}
+
+
+/// Mixin media-down: media screen and max-width
+/// @require $breakpoints
+/// @param {String} $max-width - Key in $breakpoints or manual max-width value
+@mixin media-down($max-width: null) {
+  $size: null;
+  @if (type-of($max-width) == number) and (not unitless($max-width)) {
+    $size : $max-width;
+  }
+  @if (map-has-key($breakpoints, $max-width)) {
+    $size: map-get($breakpoints, $max-width)
+  }
+  @if $size {
+    @media screen and (max-width: $size) {
+      @content;
+    } 
+  } @else {
+    @warn "undefined or null value for media-down";
+  }
+}
+
+/// Mixin media-between: media screen min-width and max-width
+/// @require $breakpoints
+/// @param {String} $min-width - Key in $breakpoints or manual min-width value
+/// @param {String} $max-width - Key in $breakpoints or manual max-width value
+@mixin media-between($min-width: null, $max-width: null) {
+  $min-size: null;
+  $max-size: null;
+  @if (type-of($min-width) == number) and (not unitless($min-width)) {
+    $min-size : $min-width;
+  }
+  @if (type-of($max-width) == number) and (not unitless($max-width)) {
+    $max-size : $max-width;
+  }
+  @if (map-has-key($breakpoints, $min-width)) {
+    $min-size: map-get($breakpoints, $min-width)
+  }
+  @if (map-has-key($breakpoints, $max-width)) {
+    $max-size: map-get($breakpoints, $max-width)
+  }
+  @if ($min-size != null) and ($max-size != null) {
+    @media screen and (min-width: #{$min-size - 1px}) and (max-width: $max-size) {
+      @content;
+    } 
+  } @else {
+    @warn "undefined or null value for media-between";
+  }
+}

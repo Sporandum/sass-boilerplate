@@ -1,0 +1,42 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+ * Main content containers
+ */
+ .container {
+  @include container($container-max-width, $container-padding);
+ }
+
+/**
+ * Clear inner floats
+ */
+.clearfix {
+  @include clearfix;
+}
+
+/**
+ * Hide visually and from screen readers
+ */
+.d-none {
+  display: none !important;
+}
+
+/**
+ * Hide only visually, but have it available for screen readers:
+ * From inuitcss :
+ * https://github.com/inuitcss/inuitcss/blob/develop/tools/_tools.hidden.scss
+ */
+.sr-only {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}

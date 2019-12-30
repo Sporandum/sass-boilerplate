@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+// This file contains global Sass variables.
+// -----------------------------------------------------------------------------
+
+
+/// Base font size
+/// @type Size
+$base-font-size: 16px;
+
+
+/// Container's maximum width
+/// @type Length
+$container-max-width: 1180px;
+/// Container's padding
+/// @type Length
+$container-padding: 20px;
+
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  sm: 420px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1300px,
+);
